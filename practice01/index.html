@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>practice_problems_1_Soyoung_Bae</title>
+    <script>
+
+//        <!--Bigger words-->
+//
+//        <!--Build a function that takes in a string and an array of strings.
+//          The function should output an array of strings that are greater than
+//          the single input string.-->
+//
+//            <!--Write a function that takes two parameters-->
+
+//        <!--Parameter 1 - A string-->
+//        <!--Parameter 2 - An array of strings-->
+
+//        <!--The function should output all the words from the input array (parameter 2)
+//             that are longer than the input string (parameter 1)-->
+
+//        <!--Example:-->
+
+//        <!--var myArray = ['bug', 'insect', 'mammal', 'reptile', 'mammoth', 'turtles'];-->
+//        <!--biggerWords('whales', myArray);-->
+//        <!--Output - ['reptile', 'mammoth', 'turtles']-->
+
+var subject ='algebra';
+var stringOperator = ['addsikins','subtracto','divido','multi'];
+var result_string = [];
+//result- anything greater than 7 letters addsikins,subtracto,
+function do_math (string, array) {
+    for (var i=0; i < array.length;i++){
+       var subject_length = string.length;
+       var array_length = array[i].length;
+        if (subject_length < array_length) {
+            result_string.push(array[i]);
+        }
+    }
+    console.log(result_string);
+}
+
+do_math(subject,stringOperator);
+
+//Total Reverse
+//
+//Build a function that takes in an array and reverses it
+//
+//Write a function that takes one parameter
+//Parameter 1 - An array of anything
+//The function should output an array that is in reverse order from the input array
+//Example:
+//    var myArray = ['hello', 45, 'Bob', 'what', '23'];
+//arrayReverse(myArray);
+//Output - ['23', 'what', 'Bob', 45, 'hello']
+//Avoid using pre-built functions that do something similar
+let total_array=['this','7', 45,'frankenstein']
+//0,1,2,3,4
+function total_reverse(array){
+     let reversedArray = array.reverse();
+    return reversedArray;
+ }
+console.log(total_reverse(total_array));
+
+//One to Multi
+//
+//Build a function that sorts an array into a multidimensional array grouped by data type
+//
+//Write a function that takes one parameter
+//Parameter 1 - An array of anything
+//The function should output a multidimensional array grouped by data type
+//Example:
+//Output - [['hello, 'goodbye', '25'], [34, 56, 12], [true, false, true]]
+    let myArray = ['hello', 34, true, false, 'goodbye', 56, 12, '25', true];
+//let numArray = [];
+//let strArray = [];
+//let booArray = [];
+//    function groupArray(array) {
+//        for (let i = 0; i < array.length; i++) {
+//            if(typeof array[i]=== 'string'){
+//                strArray.push(array[i]);
+//            }
+//            else if(typeof array[i]=== 'number') {
+//                numArray.push(array[i]);
+//            }
+//            else if(typeof array[i] === 'boolean') {
+//                booArray.push(array[i]);
+//            }
+//
+//        }
+//    console.log(numArray,strArray,booArray);
+//    }
+//console.log(groupArray(myArray));
+
+//method #2 where storage object is created and while the loop runs the type of gets pushed
+//into the array type inside the object.
+//function groupArray2(array){
+//        let storage = {
+//            number: [],
+//            boolean: [],
+//            string: []
+//        };
+//        for(let i=0; i<array.length; i++){
+//            storage[typeof array[i]].push(array[i]);
+//        }
+//return [storage.number, storage.boolean, storage.string];
+//ES6 explodes the storage object into small part of the array.
+//        let {number, boolean, string} = storage
+//        return [number, boolean, string];
+//}
+//console.log('grouparray2 : ',groupArray2(myArray))
+
+
+//one line code that employs higher order function and runs thru forEach and loops thru
+//and then pushes the new array into the object storage.
+let storage = {
+    number: [],
+    boolean: [],
+    string: []
+};
+
+myArray.forEach(function(item){ storage[typeof item].push(item);});
+
+console.log(storage);
+
+//Sort
+//
+//Build a function that takes in an array of strings and outputs a new array with the same strings in alphabetical order.
+//
+//    Write a function that takes one parameter
+//Parameter 1 - An Array of strings
+//The function should output an array containing all the strings from the input array but in alphabetical order
+//sort(myArray);
+//Output - ['cat', 'dog', 'human', 'mouse']
+let animalArray = ['mouse', 'cat', 'dog', 'human'];
+
+   let alphabetArray= animalArray.sort();
+   console.log(alphabetArray);
+
+//FizzBuzz
+//
+//Build a function that prints the numbers from 1 to 100.X
+// But for multiples of three print “Fizz” instead of the number and for the
+// multiples of five print “Buzz”. For numbers which are multiples of both three
+// and five print “FizzBuzz”.
+//
+//Write a function that takes no parameters x
+//The function should output the numbers 1 through 100, following the rules from above
+
+
+//function fizzBuzz() {
+//    for (let i = 1; i < 101; i++) {
+//        if (i % 3 === 0) {
+//            console.log('fizz');
+//        }
+//        if (i % 5 === 0) {
+//            console.log('buzz');
+//        }
+//        if (i % 15 === 0 ) {
+//            console.log('fizz-buzz');
+//        }
+//        else {
+//            console.log(i);
+//        }
+//    }
+//}
+//console.log(fizzBuzz());
+
+
+//Dan showed another way to do this is creating a object checker to check thru the objects all at once
+//(goals)
+
+//function fizzbuzz(){
+//    var checkList = {
+//        '3' : 'fizz',
+//        '5' : 'buzz',
+//        '15' : 'fizzbuzz'
+//    }
+//    var numList = [15, 5, 3];
+//
+//    for(var i=1; i<100; i++){
+//        for(var x=0; x<numList.length; x++){
+//            var numToCheck = numList[x];
+//            if(i % numToCheck === 0){
+//                console.log(checkList[numToCheck]);
+//                break;
+//            } else {
+//                console.log(i);
+//            }
+//        }
+//    }
+//}
+
+//randomize array
+//Create a function, randomize_list(), that takes an array and randomizes the order,
+// without resorting to the use of any pre-existing array methods.
+//input_array: an array of anything
+//Output:
+//    output_array, the original array, randomly arranged
+
+//take array, math.random & math.floor the index of the array between the array.length
+
+function randomize_list(array){
+//fisher-yates shuffle
+let m = array.length,t, i;
+// While there remain elements to shuffle…
+while(m){
+    // Pick a remaining element…
+     let i = Math.floor(Math.random()* m--);
+    // And swap it with the current element.
+        t= array[m];
+        array[m] = array[i];
+        array[i] = t;
+
+ }
+ return array;
+}
+let numarray = [2,3,4,5,6,7,8,9];
+
+console.log(randomize_list(numarray));
+
+//Bipolar Loop
+//Create a single loop that simultaneously counts up on one variable,
+// while counting down on another.
+// The only code inside the for loop should be a console.log that lists both variables.
+// Put your solution in answer.js
+//
+//hint: You can have multiple initiators, conditionals, and incrementers/decrementers in the same for loop.
+
+// For example:
+//    for(<initiator 1>,<initiator 2>; <check 1>,<check2>; <increment 1>,<increment 2>){
+//    //do work
+//}
+function bipolar(val1,val2) {
+    for (val1 += 1, val2 += 0 ; val1+(Math.floor(Math.random()), val2+(Math.floor(Math.random())) ); val1+=1,val2+=0) {
+        console.log(val1,val2);
+    }
+    return result;
+}
+
+bipolar(2,3);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

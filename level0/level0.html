@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>do_math_Soyoung_Bae</title>
+    <script>
+
+////LVL 0.1 : DO MATH <-------
+////        Build a function, do_math, that takes in 3 parameters: num1 (number), num2 (number), and operator (string)
+////        it uses the operator to determine what math to do to the numbers
+////        if '+', it adds them
+////num1 num2 parameters are the names of ingredients
+        function do_math (num1,num2,operator){
+            if (operator === '+'){
+                result= num1 + num2 ;
+                return result;
+            }
+            else if (operator === '-'){
+                result = num1 - num2 ;
+                return result;
+            }
+            else if (operator === '*'){
+                result = num1 * num2 ;
+                return result;
+            }
+            else if (operator === '/'){
+                result = num1 / num2 ;
+                return result;
+            }
+        }
+////arguments= (5,4,'(respective symbols)' they are the actual ingredients being processed by the function do_math
+            var num1 = 5;
+            var numr2 = 4;
+            console.log(do_math(num1, numr2,'+'));
+            console.log(do_math(num1, numr2,'-'));
+            console.log(do_math(num1, numr2,'*'));
+            console.log(do_math(num1, numr2,'/'));
+
+////LVL 0.2 : Random Number or Array Element
+////        Build a function, random_range, that takes 2 parameters, start_num and end_num.then it returns a random element from the array
+////        OPTIONALLY: If start_num is an array instead (and end_num isn't specified), then it returns a random element from the array
+//
+//// build a function random_range that takes 2 parameters start_num and end_num and returns a random number between those two values.
+
+        function random_range(start_num,end_num){
+            return Math.floor(Math.random() * (end_num - start_num) ) + start_num
+        }
+        var start_num = 5;
+        var end_num=20;
+        result= random_range(start_num, end_num);
+        console.log(result);
+
+////LVL 0.3 Math Combo
+////          Build a function, cocococombomath, that takes 5 numbers as parameters.
+////          It: - multiplies the 1st number x the 2nd number - the result of that, it adds the 3rd number -
+////          the result of that, it divides by the 4th number - the result of that, it subtracts the 5th number -
+////          it returns that result
+
+        function cocococombomath (cat1,cat2,cat3,cat4,cat5){
+            result = ((((cat1 * cat2) + cat3) / cat4) - cat5);
+            return result;
+        }
+        var cat1 = 1;
+        var cat2 = 2;
+        var cat3 = 3;
+        var cat4 = 4;
+        var cat5 = 5;
+
+        result = cocococombomath (cat1,cat2,cat3,cat4,cat5);
+        console.log(result);
+
+//LVL 0.4 Find Middle of String
+//Build a function, find_middle_letters, that finds the middle of a string.
+// If the string is an odd number of characters, it returns 1 letter.
+// If it is an even number of characters, it returns 2 characters. It takes a string as a parameter
+
+        function find_middle_letters(string){
+    //if the length of the string modulus by 2 returns 0 (indicating it is even) run this statement
+            if (string.length % 2 === 0){
+//                8 % 2 = 0 === true (even)
+                //var str will take the string and splice out the divided length of string and the divieded length -1
+                strArray = [string[string.length/2],string[(string.length/2)-1]];
+                console.log("even string");
+                result = strArray;
+                console.log ('the even string of '+ string + ' is '+ result);
+            }
+
+            else if (Math.floor(string.length % 2) === 1){
+//                5 % 2 = .5(mf)->1 ===1 true (odd)
+                //the new var str will be from the divided length of the string math floored
+                strArray = [string[Math.floor(string.length/2)]];
+                console.log('odd string');
+                result = strArray;
+                console.log ('the odd string of '+ string + ' is '+ result);
+            }
+        }
+var strArray = [];
+
+var odd_onion = 'onion' ;
+find_middle_letters(odd_onion);
+
+var even_doggos = 'doggos';
+find_middle_letters(even_doggos);
+
+
+
+//LVL 0.5 Invert Positive Number
+//Build a function, invert_negatives, that takes a number as a parameter,
+// and if the number is positive, it makes it negative.
+// If it isn't a number, it returns false
+        function invert_negatives (num){
+           // if number is less then zero (making it negative)
+            //math abs method makes negative into the absolute value.
+
+            if (num <= 0){
+                //if number is negative use Math.abs to return num
+                num = Math.abs(num);
+                return num;
+            }
+            else if (0 <= num){
+                //if number is positive uses -Math.abs to return num
+                num = -Math.abs(num);
+                return num;
+            }
+            else {
+                //else if not a number return NaN
+                return (NaN);
+            }
+        }
+        var positiveNum = 45;
+        var negativeNum = -23;
+
+//        invert_negatives(positiveNum);
+        console.log("Positive number(45) has been turned to " + invert_negatives(positiveNum));
+//        invert_negatives(negativeNum);
+        console.log("Negative number(-23) has been turned to " + invert_negatives(negativeNum));
+
+
+//July 31st practice problem given by Andy (that sadistic bastard lol jk)
+// Build a function that sorts an array into a multidimensional array grouped by data type
+// Write a function that takes one parameter
+// Parameter 1 - An array of anything
+// The function should output a multidimensional array grouped by data type
+// this function will take in myArray- depending on types of primitive data type use typeof() method
+// to sort into  different types of array (numbers,boolean, string);
+var myString = [];
+var myBoolean = [];
+var myNumbers = [];
+// Example:
+var myArray = ['hello', 34, true, false, 'goodbye', 56, 12, '25', true];
+//Output - [['hello, 'goodbye', '25'], [34, 56, 12], [true, false, true]];
+function group_array (array){
+    for(i=0; i<= array.length; i++) {
+        if (typeof(array[i]) === typeof("String")){
+            myString.push(array[i]);
+        }
+        else if (typeof(array[i]) === typeof(true || false)){
+            myBoolean.push(array[i]);
+        }
+        else if (typeof(array[i]) === typeof(1)){
+            myNumbers.push(array[i]);
+        }
+    }
+}
+group_array(myArray);
+console.log(myString);
+console.log(myBoolean);
+console.log(myNumbers);
+
+//July 31 array iteration practice problems
+///////////////////////////////////////////
+//create a for loop that iterates through the entire array and console logs each value
+
+var cat_Array=[1,"cat","is","not","enough",true];
+function array_value_iteration (array){
+    for (i=0; i <= array.length-1; i++){
+        if(array[i] !== null);
+        console.log(array[i]);
+    }
+}
+
+array_value_iteration(cat_Array);
+
+//MO Loops, Mo problems (Im dying Andy)
+///////////////////////////////////////////
+//create a for loop that iterates through the array backwards and console logs each value
+var forward_Array = [1,'monkey',3,'junkie','wow','much',false];
+function backwards_array(array){
+    for(i=array.length-1; i>= 0;i--){
+        if(array[i] !== null);
+        console.log(array[i]);
+    }
+}
+
+backwards_array(forward_Array);
+///////////////////////////////////////////
+//create a for loop that iterates through the array, skipping ever other word.  for example, hello, then yo, then hiya
+var hello_bye =['hi','bye','konichiwa','sayonara','anyong','jal-ga'];
+//output= bye, sayonara, jal-ga
+function skip_arrays(array){
+    for(i=0; i<= array.length-1; i++){
+        if(array[i] < array[i++]);
+        console.log(array[i]);
+    }
+}
+
+skip_arrays(hello_bye);
+///////////////////////////////////////////
+//create a for loop that iterates through the array and console.log's the length of each item in the array
+var arrVowel = ['the','forward','this','it'];
+var individualLengthOfVowel = [];
+//output= []
+function lengthy_Array(array){
+    for (var i = 0; i <= array.length-1; i++){
+        var oneArray = array[i];
+       var lengthOfString= oneArray.length;
+        individualLengthOfVowel.push(lengthOfString);
+    }
+    console.log(individualLengthOfVowel);
+
+}
+lengthy_Array(arrVowel);
+///////////////////////////////////////////
+//create a for loop that adds each array item to a new array in reverse order
+var leftArray = ['this','is','read','from','left','to','right'];
+var reverseArray = [];
+//0,1,2,3,4,5,6 (input)
+//6,5,4,3,2,1,0 (output)
+//take var leftArray
+//take the last index of leftArray
+//push into the reverseArray
+function addArrayInReverse(array) {
+//    for (var i = 0; i <= array.length-1; i++) {
+            var x = array.reverse();
+            reverseArray.push(x);
+//    }
+    console.log(reverseArray);
+}
+addArrayInReverse(leftArray);
+///////////////////////////////////////////
+//create a for loop that adds elements to an array ONLY if they start with the letter h
+var array = ['Happy','Sad', 'Halo','Paleo'];
+
+//take string, split to array
+//take string_to_array and see if index of 0 = h
+//if this is true, push to new array
+function splitString(array){
+    for (var i = 0; i <= array.length-1; i++){
+        var arrayWithH= [];
+        var string_to_array = array[i].split('');
+        if(string_to_array[0].valueOf() === "H"){
+            arrayWithH.push(string_to_array.join());
+            array[i]++;
+        }
+        else if(string_to_array[0].valueOf() !== "H"){
+            return undefined;
+        }
+        return arrayWithH;
+    }
+}
+
+
+
+console.log(splitString(array));
+
+///////////////////////////////////////////
+//create a for loop that adds each element to a new object.  give the object a key with the same index as the array element it came from
+
+// LVL 0.6 Find the vowels
+//given a string, find all the vowels in the string. Store them in a new string
+//example:
+//parameters: "four score and seven years ago"
+//return: "ouoeaeeeaao"
+
+var str = "four score and seven years ago";
+var res = str.split('')
+
+function findVowel (res){
+    var vowelObject = {}
+    switch(res){
+        case 'a':
+            vowelObject.push('a');
+            break;
+        case 'e':
+            vowelObject.push('e');
+            break;
+        case 'i':
+            vowelObject.push('i');
+            break;
+        case 'o':
+            vowelObject.push('o');
+            break;
+        case 'u':
+            vowelObject.push('u');
+            break;
+        case '':
+            res[i+1];
+            break;
+    }
+    console.log(vowelObject);
+}
+
+console.log(findVowel(res));
+
+//////////////////////////
+//LVL 0.7 alternate caps
+
+//given a string, create a new string with every other letter capitalized
+//example:
+//    parameters: "amazing"
+//return: "aMaZiNg"
+//human-level instructions
+//
+//create variable to store new string X
+//start a loop to proceed through the string X
+//get a new letter from the string
+//store it in a variable
+//get the next letter from the string
+//store it in a variable
+//capitalize it
+//add the regular and capitalized letters to the new string
+//repeat
+//Contact GitHub API Training Shop Blog About
+
+        function alternativeCaps(string){
+            let everyOtherCap = null;
+            let everyLowercase = null;
+            for(let i = 0; i < string.length; i++){
+                let minval = (string[0]);
+                let maxval = everyOtherCap.push(string[1]);
+
+
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
